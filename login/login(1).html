@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>登录1</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			a{
+				text-decoration: none;
+			}
+			input,button{
+				background: transparent;/* 透明背景,相当于没设置背景,用父元素的. */
+				border: none;
+				outline: none;/* 去除轮廓线,轮廓线不占空间,起突出作用，一般用于去除input的轮廓线 */
+			}
+			body{
+				height: 100vh;
+				/* 设置渐变背景颜色，语法background: linear-gradient(direction,color-stop1,color-stop2,...); */
+				background:linear-gradient(#243b55,#141e30);
+				color: #03e9f4;
+				font-size: 16px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.login-box{
+				width: 400px;
+				height: 364px;
+				background: rgba(0,0,0,0.5);
+				box-shadow: 0px 15px 25px 0 rgba(0,0,0,0.6);
+				padding: 40px;
+				box-sizing: border-box;
+			}
+			h2{
+				text-align: center;
+				color: #fff;
+				margin-bottom: 30px;
+			}
+			.item{
+				height: 45px;
+				border-bottom: 1px solid #fff;
+				margin-bottom: 40px;
+				position: relative;
+			}
+			.item input{
+				width: 100%;
+				height: 100%;
+				color: #fff;
+				padding-top: 20px;
+				box-sizing: border-box; /* width=border+padding+内容的width，height=border+padding+内容的height。*/
+			}
+			.item input:focus+label,.item input:valid+label{
+				/* ：focus是聚焦时，：valid是合法时，如果 input 元素中输入的值为合法的就…… */
+				top: 0;
+				font-size: 12px;
+			}
+			.item label{
+				position: absolute;
+				left: 0;
+				top: 12px;
+				transition: 0.5s; /* 添加渐变效果 */
+			}
+			.btn{
+				padding: 10px 20px;
+				margin-top: 20px;
+				color: #03E9F4;
+				position: relative;
+				overflow: hidden; /* 超出边界部分隐藏 */
+				text-transform: uppercase;/* 将letter设置成大写字母 */
+				letter-spacing: 2px;/* 字母间距 */
+			}
+			.btn:hover{
+				background: #03E9F4;
+				border-radius: 5px;/* 圆角 */
+				color: #fff;
+				/* box-shadow（盒子阴影）可以设置很多层 */
+				box-shadow: 0 0 5px 0 #03E9F4,
+							0 0 25px 0 #03E9F4;
+							0 0 50px 0 #03E9F4;
+			}
+			.btn>span{
+				position: absolute;
+			}
+			.btn>span:nth-child(1){
+				width: 100%;
+				height: 2px;
+				/*为了兼容各类浏览器 -moz 指火狐，-ms 指 IE，-webkit 指谷歌， -o 指 Opera */
+				background: -webkit-linear-gradient(left,transparent,#03e9f4);
+				left: -100%;
+				top: 0px;
+				/* 添加动画:名称 时间 延迟时间(可省略) 速度 循环(infinite指无限循环下去) */
+				animation: line1 1s linear infinite;
+			}
+			@keyframes line1{
+				50%,100%{
+					left: 100%;
+				}
+			}
+			.btn>span:nth-child(2){
+				width: 2px;
+				height: 100%;
+				background: -webkit-linear-gradient(top,transparent,#03e9f4);
+				right: 0px;
+				top: -100%;
+				animation: line2 1s 0.25s linear infinite;
+			}
+			@keyframes line2{
+				50%,100%{
+					top: 100%;
+				}
+			}
+			.btn>span:nth-child(3){
+				width: 100%;
+				height: 2px;
+				background: -webkit-linear-gradient(left,#03e9f4,transparent);
+				left: 100%;
+				bottom: 0px;
+				animation: line3 1s 0.5s linear infinite;
+			}
+			@keyframes line3{
+				50%,100%{
+					left: -100%;
+				}
+			}
+			.btn>span:nth-child(4){
+				width: 2px;
+				height: 100%;
+				background: -webkit-linear-gradient(top,#03e9f4,transparent);
+				left: 0px;
+				bottom: -100%;
+				animation: line4 1s 0.75s linear infinite;
+			}
+			@keyframes line4{
+				50%,100%{
+					bottom: 100%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="login-box">
+			<h2>Login</h2>
+			<form action="">
+				<div class="item">
+					<input type="text" required>
+					<label>UserName</label>
+				</div>
+				<div class="item">
+					<input type="password" required>
+					<label>PassWord</label>
+				</div>
+				<button class="btn">submit
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+			</form>
+		</div>
+	</body>
+</html>
